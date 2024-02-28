@@ -38,6 +38,24 @@ To deploy VMs on Azure Cloud using Terraform, follow these steps:
 
 2. Run Terraform commands to apply the configuration and provision the infrastructure.
 
+**Initialize Terraform**: Run the following command to initialize Terraform in the project directory:
+ ```
+ terraform init
+ ```
+
+**Plan Infrastructure Changes**: Before applying any changes, it's good practice to preview the changes using the `terraform plan` command. Run the following command to generate and review an execution plan:
+ ```
+ terraform plan -var-file=minikube.tfvars
+ ```
+
+ Update the vaules in `minikube.tfvars` file.
+
+**Apply Changes**: After reviewing the execution plan and ensuring it meets your requirements, apply the changes using the following command:
+ ```
+ terraform apply -var-file=minikube.tfvars
+ ```
+
+
 ## Webapp Deployment on Minikube Cluster
 
 To deploy the web application on the Minikube cluster, follow these steps:
@@ -53,7 +71,7 @@ To deploy the web application on the Minikube cluster, follow these steps:
 3. Deploy the web application using Helm:
 
    ```bash
-   helm install webapp ./webapp --namespace webapp
+   helm install webapp ./webapp.tar.gz --namespace webapp
    ```
 
 ## Accessing the Web Application
