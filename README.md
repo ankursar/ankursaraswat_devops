@@ -53,7 +53,7 @@ To deploy the web application on the Minikube cluster, follow these steps:
 3. Deploy the web application using Helm:
 
    ```bash
-   helm install webapp ./webapp.tar.gz --namespace webapp
+   helm install webapp ./webapp --namespace webapp
    ```
 
 ## Accessing the Web Application
