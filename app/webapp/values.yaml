@@ -1,0 +1,70 @@
+replicaCount: 1
+
+image:
+  repository: anksa/webapp-nodejs
+  pullPolicy: IfNotPresent
+  tag: "v1"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingressClass:
+  enabled: true
+  isDefaultClass: true
+
+ingress:
+  enabled: enable
+  className: "nginx"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: webapp.example.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources:
+   limits:
+    cpu: 200m
+    memory: 128Mi
+   requests:
+    cpu: 100m
+    memory: 64Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 60
+

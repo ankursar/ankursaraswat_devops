@@ -58,6 +58,6 @@ To deploy the web application on the Minikube cluster, follow these steps:
 
 ## Accessing the Web Application
 
-The web application is accessible at [http://webapp.example.com](http://webapp.example.com). However, since Minikube is set up, you cannot access this URL through a VM public IP.
+The web application is accessible at [http://webapp.example.com](http://webapp.example.com). However, since Minikube is set up, you cannot access this URL through a VM public IP. Please update `<minikube ip>` with your Minikube IP address in the `/etc/hosts` file of VM.
 
 For any issues or questions, please feel free to open an issue or reach out to the maintainer.# ankursaraswat_devops
